@@ -31,28 +31,37 @@ SUPERVISOR_IMAGE_ID=$(balena inspect --format='{{.Id}}' $SUPERVISOR_IMAGE:$SUPER
 SUPERVISOR_CONTAINER_IMAGE_ID=$(balena inspect --format='{{.Image}}' resin_supervisor || echo "")
 
 runSupervisor() {
+    local host_data_dir=/resin-data/resin-supervisor
+    local cid_filename=container-id
+
     balena rm --force resin_supervisor || true
     balena run --privileged --name resin_supervisor \
         --net=host \
-        -v /var/run/balena.sock:/var/run/balena.sock \
-        -v $CONFIG_PATH:/boot/config.json  \
+        --cidfile="$host_data_dir/$cid_filename" \
+        -e "CONTAINER_ID_FILE_PATH=/data/$cid_filename" \
+        -v /var/run/balena-engine.sock:/var/run/balena-engine.sock \
+        -v "$CONFIG_PATH:/boot/config.json"  \
         -v /mnt/data/apps.json:/boot/apps.json \
-        -v /resin-data/resin-supervisor:/data \
+        -v "$host_data_dir:/data" \
         -v /proc/net/fib_trie:/mnt/fib_trie \
         -v /var/log/supervisor-log:/var/log \
         -v /:/mnt/root \
         -e DOCKER_ROOT=/mnt/root/var/lib/docker \
-        -e DOCKER_SOCKET=/var/run/balena.sock \
+        -e DOCKER_SOCKET=/var/run/balena-engine.sock \
         -e BOOT_MOUNTPOINT=$BOOT_MOUNTPOINT \
-        -e API_ENDPOINT=$API_ENDPOINT \
-        -e REGISTRY_ENDPOINT=$REGISTRY_ENDPOINT \
-        -e MIXPANEL_TOKEN=$MIXPANEL_TOKEN \
-        -e DELTA_ENDPOINT=$DELTA_ENDPOINT \
-        -e LED_FILE=${LED_FILE} \
-        -e LISTEN_PORT=$LISTEN_PORT \
-        -e SUPERVISOR_IMAGE=${SUPERVISOR_IMAGE}:${SUPERVISOR_TAG} \
+        -e "API_ENDPOINT=$API_ENDPOINT" \
+        -e "REGISTRY_ENDPOINT=$REGISTRY_ENDPOINT" \
+        -e "PUBNUB_SUBSCRIBE_KEY=$PUBNUB_SUBSCRIBE_KEY" \
+        -e "PUBNUB_PUBLISH_KEY=$PUBNUB_PUBLISH_KEY" \
+        -e "MIXPANEL_TOKEN=$MIXPANEL_TOKEN" \
+        -e "DELTA_ENDPOINT=$DELTA_ENDPOINT" \
+        -e "LED_FILE=${LED_FILE}" \
+        -e "LISTEN_PORT=$LISTEN_PORT" \
+        -e "SUPERVISOR_IMAGE=${SUPERVISOR_IMAGE}:${SUPERVISOR_TAG}" \
+        -e "BALENA_ROOT_CA=$BALENA_DECODED_ROOT_CA" \
+        -e "NODE_EXTRA_CA_CERTS=$NODE_EXTRA_CA_CERTS" \
         ${EXTRA_MOUNTS} \
-        ${SUPERVISOR_IMAGE}:${SUPERVISOR_TAG}
+        "${SUPERVISOR_IMAGE}:${SUPERVISOR_TAG}"
 }
 
 if [ -z "$SUPERVISOR_IMAGE_ID" ]; then
