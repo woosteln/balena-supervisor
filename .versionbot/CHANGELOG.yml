@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'env: expose osVariant as environment variable'
+      hash: 6119752d05954b1e4534c0a56bc69305e1a16e4b
+      body: ''
+      footer:
+        Connects-to: '#1074'
+        connects-to: '#1074'
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Matthew McGinn <matthew@balena.io>
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      author: Matthew McGinn
+  version: 10.6.0
+  date: 2019-11-03T16:44:26.141Z
+- commits:
     - subject: Bump lodash from 4.17.11 to 4.17.13
       hash: 835ef7908e8daba1c0362fae8aaa4b592b2d1b2f
       body: >
