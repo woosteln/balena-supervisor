@@ -1,4 +1,16 @@
 - commits:
+    - subject: Perform validation on contract requirements
+      hash: 5e07f2b183025e9efca123dfc758a0c87fe6c845
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+  version: 10.6.3
+  date: 2019-11-07T16:40:56.268Z
+- commits:
     - subject: Define the database type of the application
       hash: 053e111626330ab4cc7a7dc545c94aa0674405ee
       body: ''
