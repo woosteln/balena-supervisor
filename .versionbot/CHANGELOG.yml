@@ -1,4 +1,38 @@
 - commits:
+    - subject: 'fix: ⬇️ Force a regular pull when moving from v2 to v3 deltas'
+      hash: 45ee7cb6296f9a7afc3c6e4e18d1552b4699b09b
+      body: ''
+      footer:
+        Backport-to: next
+        backport-to: next
+        Change-type: patch
+        change-type: patch
+        Fixes: '#1072'
+        fixes: '#1072'
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+    - subject: Don't allow cross-app delta requests
+      hash: 0a2e5e2a6db318828195324f30837e68c34333c3
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+    - subject: Always do a standard docker download on first pull
+      hash: cd6ef0b39ea3da51fd564383f854f1904341bbe0
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+  version: 10.3.8
+  date: 2019-12-18T11:00:23.282Z
+- commits:
     - subject: 'ping: move /ping out from authentication'
       hash: 8d5633a11f15cee356854e9c21502ada4b89e7c7
       body: ''
