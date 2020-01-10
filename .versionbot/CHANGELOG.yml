@@ -1,4 +1,25 @@
 - commits:
+    - subject: Keep locks if purge is called
+      hash: 695cf64efd3090cbe09f94a01556a423f1337ab6
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+        Signed-off-by: Michel Wohlert <michel.wohlert@googlemail.com>
+        signed-off-by: Michel Wohlert <michel.wohlert@googlemail.com>
+      author: Michel Wohlert
+    - subject: Check force to be truthy in v2 purge
+      hash: 272f3a43042b7e6f43b868657fc6fc83e5574d96
+      body: ''
+      footer:
+        Change-Type: patch
+        change-type: patch
+        Signed-off-by: Michel Wohlert <michel.wohlert@googlemail.com>
+        signed-off-by: Michel Wohlert <michel.wohlert@googlemail.com>
+      author: Michel Wohlert
+  version: 10.6.28
+  date: 2020-01-10T21:37:50.975Z
+- commits:
     - subject: Throttle state report patches to once per 10 seconds
       hash: 4b0f431f9b4eadcec30a21483a5ee5e3c2ecb14b
       body: ''
