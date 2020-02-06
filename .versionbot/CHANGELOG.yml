@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'events: Switch config module to use global event bus'
+      hash: f33efc91cee83a2cea9d31b84628fa83d0b74d26
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Rich Bayliss <rich@balena.io>
+        signed-off-by: Rich Bayliss <rich@balena.io>
+      author: Rich Bayliss
+  version: 10.6.35
+  date: 2020-02-06T17:07:53.726Z
+- commits:
     - subject: 'bug: Delay sending logs until the device is provisioned'
       hash: fe5fd2b7ef5f40d688ee85c874934487d0c2d702
       body: ''
