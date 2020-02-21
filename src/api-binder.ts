@@ -173,6 +173,7 @@ export class APIBinder {
 			'apiEndpoint',
 			'unmanaged',
 			'bootstrapRetryDelay',
+			'initialDeviceName',
 		]);
 		let { apiEndpoint } = conf;
 		const { unmanaged, bootstrapRetryDelay } = conf;
@@ -201,7 +202,19 @@ export class APIBinder {
 		// Either we haven't reported our initial config or we've been re-provisioned
 		if (apiEndpoint !== initialConfigReported) {
 			log.info('Reporting initial configuration');
-			await this.reportInitialConfig(apiEndpoint, bootstrapRetryDelay);
+			// We fetch the deviceId here to ensure it's been set
+			const deviceId = await this.config.get('deviceId');
+			if (deviceId == null) {
+				throw new InternalInconsistencyError(
+					`Attempt to report initial configuration without a device ID`,
+				);
+			}
+			await this.reportInitialConfig(
+				apiEndpoint,
+				deviceId,
+				bootstrapRetryDelay,
+				conf.initialDeviceName ?? undefined,
+			);
 		}
 
 		log.debug('Starting current state report');
@@ -683,7 +696,11 @@ export class APIBinder {
 
 	// Creates the necessary config vars in the API to match the current device state,
 	// without overwriting any variables that are already set.
-	private async reportInitialEnv(apiEndpoint: string) {
+	private async reportInitialEnv(
+		apiEndpoint: string,
+		deviceId: number,
+		initialName?: string,
+	) {
 		if (this.balenaApi == null) {
 			throw new InternalInconsistencyError(
 				'Attempt to report initial environment without an API client',
@@ -706,7 +723,6 @@ export class APIBinder {
 		const targetConfig = await this.deviceState.deviceConfig.formatConfigKeys(
 			targetConfigUnformatted,
 		);
-		const deviceId = await this.config.get('deviceId');
 
 		if (!currentState.local.config) {
 			throw new InternalInconsistencyError(
@@ -738,19 +754,30 @@ export class APIBinder {
 			}
 		}
 
+		if (initialName != null) {
+			await this.reportInitialName(deviceId, initialName);
+		}
+
 		await this.config.set({ initialConfigReported: apiEndpoint });
 	}
 
 	private async reportInitialConfig(
 		apiEndpoint: string,
+		deviceId: number,
 		retryDelay: number,
+		initialName?: string,
 	): Promise<void> {
 		try {
-			await this.reportInitialEnv(apiEndpoint);
+			await this.reportInitialEnv(apiEndpoint, deviceId, initialName);
 		} catch (err) {
 			log.error('Error reporting initial configuration, will retry', err);
 			await Bluebird.delay(retryDelay);
-			await this.reportInitialConfig(apiEndpoint, retryDelay);
+			await this.reportInitialConfig(
+				apiEndpoint,
+				deviceId,
+				retryDelay,
+				initialName,
+			);
 		}
 	}
 
@@ -979,6 +1006,25 @@ export class APIBinder {
 		});
 
 		return router;
+	}
+
+	private async reportInitialName(
+		deviceId: number,
+		name: string,
+	): Promise<void> {
+		if (this.balenaApi == null) {
+			throw new InternalInconsistencyError(
+				`Attempt to set an initial device name without an API client`,
+			);
+		}
+
+		await this.balenaApi.patch({
+			resource: 'device',
+			id: deviceId,
+			body: {
+				device_name: name,
+			},
+		});
 	}
 }
 

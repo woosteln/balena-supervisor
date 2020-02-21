@@ -89,6 +89,11 @@ export const schema = {
 		mutable: true,
 		removeIfNull: false,
 	},
+	initialDeviceName: {
+		source: 'config.json',
+		mutable: false,
+		removeIfNull: false,
+	},
 
 	apiSecret: {
 		source: 'db',

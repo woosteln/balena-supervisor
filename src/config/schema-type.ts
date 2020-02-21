@@ -86,6 +86,10 @@ export const schemaTypes = {
 		type: PermissiveBoolean,
 		default: false,
 	},
+	initialDeviceName: {
+		type: t.string,
+		default: NullOrUndefined,
+	},
 
 	// Database types
 	apiSecret: {
