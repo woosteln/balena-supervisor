@@ -1,4 +1,19 @@
 - commits:
+    - subject: Make balena-sync optional
+      hash: 9df0424c7c26d0c964f9359303d68f008c45a167
+      body: |
+        Drivelist won't build with node12, and it won't build at all with osx.
+        We make balena-sync optional so that everything but sync.js will work
+        fine on these platforms.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+  version: 10.8.1
+  date: 2020-02-24T00:22:23.297Z
+- commits:
     - subject: Add procfs label
       hash: 89a9d85e8743926cecbc82e8c53d37bca6f845b9
       body: ''
