@@ -1,4 +1,18 @@
 - commits:
+    - subject: Respect an initialDeviceName field in the config.json
+      hash: 55c9e8c34fc4cdeb4e0b0e5fb86363f5a197fe00
+      body: ''
+      footer:
+        Closes: '#909'
+        closes: '#909'
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+  version: 10.11.0
+  date: 2020-03-16T21:17:23.453Z
+- commits:
     - subject: 'logging: fix up some typos'
       hash: ab7e8b55140cc3169e9337f8c29a77468b13be7c
       body: ''
