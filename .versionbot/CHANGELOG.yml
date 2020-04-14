@@ -1,4 +1,49 @@
 - commits:
+    - subject: Keep locks if purge is called
+      hash: 8e6024769a96ccbba717cf0de9ddd2b39b34af1c
+      body: >
+        When purge is called make use of the virtual locks to ensure
+        deterministic behavior, e.g. not apply appUpdate directly after purge
+        has commenced.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Michel Wohlert <michel@1012consulting.io>
+        signed-off-by: Michel Wohlert <michel@1012consulting.io>
+      author: Michel Wohlert
+    - subject: Keep virtual locks when lock was called with force
+      hash: 47ab7a7af2f761b5d3558e78fb7c98af03506d39
+      body: >
+        Keep track of lockfiles, when they are forcefully unlocked and keepLocks
+        is true. These locks will be virtually imposed for the duration of
+        lockKeepTimeout.
+      footer:
+        Change-Type: minor
+        change-type: minor
+        Signed-off-by: Michel Wohlert <michel@1012consulting.io>
+        signed-off-by: Michel Wohlert <michel@1012consulting.io>
+      author: Michel Wohlert
+    - subject: Add lockKeepTimeout config
+      hash: efe33975897c587dc08da51da835e94036dc309d
+      body: >
+        Add lockKeepTimeout configuration value to specify timeout until which
+        virtual locks will be held.
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Michel Wohlert
+    - subject: Check force to be truthy in v2 purge
+      hash: b76f10a910900b707c4c000abca6dc917bd4a764
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Michel Wohlert <michel@1012consulting.io>
+        signed-off-by: Michel Wohlert <michel@1012consulting.io>
+      author: Michel Wohlert
+  version: 11.2.0
+  date: 2020-04-14T02:33:14.744Z
+- commits:
     - subject: "\U0001F680 Update supervisor to node12"
       hash: 826eec2e4fe29860d23cf6c2276390b5c7f26a09
       body: ''
