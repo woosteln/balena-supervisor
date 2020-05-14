@@ -1,4 +1,18 @@
 - commits:
+    - subject: allow customizing persistent logs retention size by var
+      hash: 35e968ebe24c0f192d6ae7fe80bb4b05fe1278fe
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Connects-to: '#1310'
+        connects-to: '#1310'
+        Signed-off-by: dt-rush <nickp@balena.io>
+        signed-off-by: dt-rush <nickp@balena.io>
+      author: dt-rush
+  version: 11.5.0
+  date: 2020-05-14T18:32:33.864Z
+- commits:
     - subject: Cache service names in local log backend
       hash: 0bceffffb61a5970db0293a8f6d83fe8015163ef
       body: ''
