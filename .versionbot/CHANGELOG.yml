@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update dependencies
+      hash: 5f34c5e1a50fa2ee98f14a5e6e39eb28a21a21ee
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 11.4.5
+  date: 2020-05-15T10:56:03.376Z
+- commits:
     - subject: Add a random offset to the poll interval with each poll
       hash: 58c6a69e5a6045e898ce5748089f4dcad7d12bc3
       body: ''
