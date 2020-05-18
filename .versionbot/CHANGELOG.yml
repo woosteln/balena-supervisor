@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update typescript to v3.9
+      hash: bf9f234f745b7755e7a3dc501adb78797b47a5b0
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Cameron Diver <cameron@balena.io>
+        signed-off-by: Cameron Diver <cameron@balena.io>
+      author: Cameron Diver
+  version: 11.4.12
+  date: 2020-05-18T19:42:48.637Z
+- commits:
     - subject: Switch to balenaApi for the state patch as patching cannot be cached
       hash: fb90042c3955e9a1a177076a711a12e226e0ab49
       body: ''
