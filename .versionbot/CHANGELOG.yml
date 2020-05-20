@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update dependencies
+      hash: 91103ad2f581c365e72b3531efd3ce15d5187f29
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 11.4.13
+  date: 2020-05-20T23:40:46.925Z
+- commits:
     - subject: Improved handling of invalid appId in V2 state endpoint
       hash: db7c27037cb3cc1e5f3ef8fbc676e0ee4a2ac0a1
       body: ''
